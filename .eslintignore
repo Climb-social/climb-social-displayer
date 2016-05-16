@@ -1,6 +1,10 @@
-blueprints/**/files/**
+bin
+blueprints
 coverage/**
 node_modules/**
 dist/**
 *.spec.js
 src/index.html
+config
+build
+server

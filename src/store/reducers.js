@@ -1,17 +1,20 @@
-import { combineReducers } from 'redux'
-import { routerReducer as router } from 'react-router-redux'
+import { combineReducers } from 'redux';
+import { routerReducer as router } from 'react-router-redux';
 
-export const makeRootReducer = (asyncReducers) => {
-  return combineReducers({
+// Sync routes
+import display from '../routes/Home/modules/display';
+
+export const makeRootReducer = (asyncReducers) =>
+  combineReducers({
     // Add sync reducers here
+    display,
     router,
-    ...asyncReducers
-  })
-}
+    ...asyncReducers,
+  });
 
 export const injectReducer = (store, { key, reducer }) => {
-  store.asyncReducers[key] = reducer
-  store.replaceReducer(makeRootReducer(store.asyncReducers))
-}
+  store.asyncReducers[key] = reducer;
+  store.replaceReducer(makeRootReducer(store.asyncReducers));
+};
 
-export default makeRootReducer
+export default makeRootReducer;
