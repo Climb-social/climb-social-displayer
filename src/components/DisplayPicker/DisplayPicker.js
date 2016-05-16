@@ -5,7 +5,7 @@ import EmbedCode from './DisplayPickerEmbedCode';
 
 import FastInput from 'components/FastInput';
 
-const DisplayPicker = ({ collectionId, setCollection, selected }) => (
+const DisplayPicker = ({ setCollection, collectionId, ...props }) => (
   <div>
     <FastInput
       type="text"
@@ -14,12 +14,12 @@ const DisplayPicker = ({ collectionId, setCollection, selected }) => (
     />
 
     <Navigation
-      {...this.props}
+      {...props}
     />
 
     <Stage
       collectionId={collectionId}
-      {...selected}
+      {...props}
     />
 
     <EmbedCode />
