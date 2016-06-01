@@ -1,4 +1,4 @@
-import reducer, { initialState } from 'redux/modules/display'
+import reducer, { initialState } from 'routes/Home/modules/display'
 
 describe('(Redux) display', () => {
   describe('(Reducer)', () => {

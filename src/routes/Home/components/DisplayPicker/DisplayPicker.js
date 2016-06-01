@@ -13,16 +13,25 @@ const DisplayPicker = ({ setCollection, collectionId, ...props }) => (
       onChange={setCollection}
     />
 
-    <Navigation
-      {...props}
-    />
+    {collectionId?
+      <div>
+        <Navigation
+          {...props}
+        />
 
-    <Stage
-      collectionId={collectionId}
-      {...props}
-    />
+        <Stage
+          collectionId={collectionId}
+          {...props}
+        />
 
-    <EmbedCode />
+        <EmbedCode />
+      </div>
+      :
+      <div>
+        <p>Provide a Collection ID</p>
+        <p>EmptyState here</p>
+      </div>
+    }
   </div>
 );
 

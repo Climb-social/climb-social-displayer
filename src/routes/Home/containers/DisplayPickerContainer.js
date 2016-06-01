@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actions as displayActions } from '../modules/display';
 
-import DisplayPicker from 'components/DisplayPicker';
+import DisplayPicker from '../components/DisplayPicker';
 
 
 const mapStateToProps = (state) => ({

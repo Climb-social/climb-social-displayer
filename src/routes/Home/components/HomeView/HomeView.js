@@ -1,7 +1,7 @@
 import React from 'react';
 // import classes from './HomeView.scss';
 
-import DisplayPickerContainer from '../containers/DisplayPickerContainer';
+import DisplayPickerContainer from '../../containers/DisplayPickerContainer';
 
 export const HomeView = () => (
   <div>
