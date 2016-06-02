@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import format from 'string-template';
+import CopyToClipboard from 'react-copy-to-clipboard';
 
 
 const template = `
@@ -10,13 +11,43 @@ const template = `
 `.replace(/\r?\n|\r/g, '');
 
 
-const EmbedCode = ({ collectionId: id, layoutName: layout }) => (
-  <code>{format(template, { id, layout })}</code>
-);
+export class EmbedCode extends React.Component {
+  static propTypes = {
+    collectionId: PropTypes.string.isRequired,
+    layoutName: PropTypes.string.isRequired,
+    onCopy: PropTypes.func,
+  };
 
-EmbedCode.propTypes = {
-  collectionId: PropTypes.string.isRequired,
-  layoutName: PropTypes.string.isRequired,
-};
+  state = {
+    copied: false,
+  };
+
+  getText() {
+    const { collectionId: id, layoutName: layout } = this.props;
+    return format(template, { id, layout });
+  }
+
+  handleCopy() {
+    const { onCopy } = this.props;
+    if (onCopy) onCopy();
+    this.setState({copied: true}, () => setTimeout(() => this.setState({copied: false}), 100));
+  }
+
+  render() {
+    const text = this.getText();
+    const { copied } = this.state;
+
+    return (
+      <div className={copied ? 'is-copied' : ''}>
+        <CopyToClipboard
+          text={text}
+          onCopy={() => this.handleCopy()}
+        >
+          <code>{text}</code>
+        </CopyToClipboard>
+      </div>
+    );
+  }
+}
 
 export default EmbedCode;
