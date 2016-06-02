@@ -5,6 +5,7 @@ const displayOptions = [
   {
     key: 'list',
     name: 'List',
+    layout: 'list',
   },
   {
     key: 'grid',

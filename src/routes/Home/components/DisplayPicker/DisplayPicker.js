@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react';
+
 import Navigation from './DisplayPickerNavigation';
 import Stage from './DisplayPickerStage';
-import EmbedCode from './DisplayPickerEmbedCode';
-
+import EmbedCode from 'components/EmbedCode';
 import FastInput from 'components/FastInput';
 
-const DisplayPicker = ({ setCollection, collectionId, ...props }) => (
+
+const DisplayPicker = ({ setCollection, collectionId, selected, ...props }) => (
   <div>
     <FastInput
       type="text"
@@ -16,6 +17,7 @@ const DisplayPicker = ({ setCollection, collectionId, ...props }) => (
     {collectionId?
       <div>
         <Navigation
+          selected={selected}
           {...props}
         />
 
@@ -24,7 +26,11 @@ const DisplayPicker = ({ setCollection, collectionId, ...props }) => (
           {...props}
         />
 
-        <EmbedCode />
+        <EmbedCode
+          collectionId={collectionId}
+          layoutName={selected.layout}
+          {...props}
+        />
       </div>
       :
       <div>
@@ -38,9 +44,7 @@ const DisplayPicker = ({ setCollection, collectionId, ...props }) => (
 
 DisplayPicker.propTypes = {
   collectionId: PropTypes.string,
-  options: PropTypes.arrayOf(PropTypes.object).isRequired,
   selected: PropTypes.object.isRequired,
-  setDisplay: PropTypes.func.isRequired,
   setCollection: PropTypes.func.isRequired,
 };
 
