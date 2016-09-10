@@ -4,9 +4,9 @@ import CopyToClipboard from 'react-copy-to-clipboard';
 
 
 const template = `
-<script src="https://npmcdn.com/react@^15.0/dist/react.min.js"></script>
-<script src="https://npmcdn.com/react-dom@^15.0/dist/react-dom.min.js"></script>
-<script src="https://npmcdn.com/react-climb-social@2.0.0-alpha.5/dist/react-climb-social.min.js"></script>
+<script src="https://unpkg.com/react@^15.0/dist/react.min.js"></script>
+<script src="https://unpkg.com/react-dom@^15.0/dist/react-dom.min.js"></script>
+<script src="https://unpkg.com/react-climb-social@2.0.0-alpha.5/dist/react-climb-social.min.js"></script>
 <div data-climb data-collection-id="{id}" data-layout="{layout}"></div>
 `.replace(/\r?\n|\r/g, '');
 
